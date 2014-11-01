@@ -1,0 +1,12 @@
+:javascript
+  $(document).ready(function() {
+    $('.flexslider').flexslider({
+      animation: "slide"
+    });
+  });
+  
+%div{:class => "flexslider"}
+  %ul{:class => "slides"}
+    - @pics_urls.each do |pic|
+      %li
+        %img{:src => pic}

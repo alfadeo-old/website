@@ -1,0 +1,55 @@
+- @hash.sort_by{|k,v| Date.parse v[0]  }.reverse.each do |key, value|
+  - date = value[0]
+  - zip = value.flatten.select{|x| x.match(".zip")}
+  - cover = value.flatten.select{|x| x.match(".jpg")}
+  - tracks = value.flatten.delete_if{|v| v !~ /\.mp3$/ } 
+  - (zip.empty?) ? (zip = tracks) : (zip = zip)
+  
+  %box{:id => key, :style=>"display:block;margin:1em;border:1px solid black;padding:1em;"}
+    %h2= key.gsub("-", " ")
+    %p= date
+    - if (zip.size == 1 and zip[0] =~ /mp3$/)
+      %a{:href=>"#{zip[0]}", :style=>"text-decoration:none;"}
+        %h4 download (rigth click)
+      %img{:src=> "/sets/releases/#{key}/#{cover[0]}", :alt =>"cover", :width=>"300px", :heigth=>"300px"}
+      %br
+      - tracks.each_with_index do |track, idx|
+        %h3= track.split("/").last.gsub(".mp3", "").gsub("-", " ")
+        %audio{:id=>"player#{key}#{idx}", :src=>"#{track}", :type=>"audio/mpeg", :controls=>"controls", :preload=>"none"}
+          Your browser does not support HTML5 audio. 
+        :javascript
+          var audio = document.getElementById("player#{key}#{idx}");    
+          audio.addEventListener("ended", function() {
+            audio = document.getElementById("player#{key}#{idx+1}");
+            audio.play();
+          });
+    - elsif (zip.size > 1 and zip[0] =~ /mp3$/)
+      %img{:src=> "/sets/releases/#{key}/#{cover[0]}", :alt =>"cover", :width=>"300px", :heigth=>"300px"}
+      %br
+      - tracks.each_with_index do |track, idx|
+        %h3= track.split("/").last.gsub(".mp3", "").gsub("-", " ")
+        %audio{:id=>"player#{key}#{idx}", :src=>"#{track}", :type=>"audio/mpeg", :controls=>"controls", :preload=>"none"}
+          Your browser does not support HTML5 audio. 
+        :javascript
+          var audio = document.getElementById("player#{key}#{idx}");    
+          audio.addEventListener("ended", function() {
+            audio = document.getElementById("player#{key}#{idx+1}");
+            audio.play();
+          });
+        %a{:href=>"#{track}", :style=>"text-decoration:none;"}
+          %h4 download (rigth click)        
+    - else
+      %a{:href=>"#{zip[0]}", :style=>"text-decoration:none;"}
+        %h4 download
+      %img{:src=> "/sets/releases/#{key}/#{cover[0]}", :alt =>"cover", :width=>"300px", :heigth=>"300px"}
+      %br
+      - tracks.each_with_index do |track, idx|
+        %h3= track.split("/").last.gsub(".mp3", "").gsub("-", " ")
+        %audio{:id=>"player#{key}#{idx}", :src=>"#{track}", :type=>"audio/mpeg", :controls=>"controls", :preload=>"none"}
+          Your browser does not support HTML5 audio. 
+        :javascript
+          var audio = document.getElementById("player#{key}#{idx}");    
+          audio.addEventListener("ended", function() {
+            audio = document.getElementById("player#{key}#{idx+1}");
+            audio.play();
+          });

@@ -1,0 +1,75 @@
+$li_color: #235597
+$bg_color: #efefef
+
+body 
+  background-color: #efefef
+  font-family: Helvetica, Verdana, Arial, sans-serif
+  line-height: 1.5em
+  color: black
+  margin: 2px 
+  overflow: scroll
+  a:link
+    list-style-type: none
+    text-decoration: none
+    color: $li_color
+  a:visited
+    text-decoration: none
+    color: $li_color 
+  overflow: auto
+
+  #top
+    position: fixed
+    background-color: #efefef
+    width: 100%
+    margin-top: -12%
+
+    .headline
+      font-size: 100px
+      padding-top: 3%
+    hr
+      margin-top: 1.5em
+    .navi
+      margin-left: -2.5%
+      font-size: medium
+
+      ul
+        list-style-type: none
+        li
+          display: inline
+          margin: 0.4em
+          font-size: large
+          
+        li.selected
+          a
+            font-size: x-large
+            color: black
+        a:focus
+          color: $li_color
+
+  
+  #content
+    min-height: 600px
+    width: 90%
+    padding-left: 2%
+    margin:
+      //top: 2em
+      top: 12%
+      bottom: 3em
+          
+    .text
+      width: 80%
+      text-align: block
+
+  a.video
+    display: inline
+  
+  .about
+    text-style: block
+    width: 80% 
+
+  .footnote
+    display: inline
+    margin-top: 10em
+    padding-bottom: 5%
+    width: 100%
+

@@ -1,0 +1,12 @@
+!/public/sets/releases
+/public/sets/releases/*
+!/public/sets
+/public/sets/*
+/log
+/.sass-cache
+/sc_key.rb
+/tmp
+/.git_bak
+/.rbenv-version
+/Gemfile.lock
+/.ruby-version

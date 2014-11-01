@@ -1,0 +1,6 @@
+- @sets.each do |set|
+  - id = set[1]
+  - title = set[0]
+  - unless id.nil? || title.nil?
+    %iframe{ :style=>"border: 0; width: 350px; height: 522px;", :src=>"http://bandcamp.com/EmbeddedPlayer/album=#{id}/size=large/bgcol=ffffff/linkcol=333333/transparent=true/, seamless"}
+      %a{ :href=>"http://alfadeo.bandcamp.com/album/#{title}"} "#{title} by Alfadeo"
