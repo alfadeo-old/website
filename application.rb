@@ -55,8 +55,12 @@ get "/videos/?" do
   haml :videos
 end
 
-get "/art/?" do
-  haml :art
+get "/images/?" do
+  @albums = {}
+  Dir["public/images/*"].each do |album|
+    @albums[File.basename(album)] = Dir["#{album}/*"].collect{|t| t.sub(/public\//,'') unless t.match(/thumbs/)}.compact
+  end
+  haml :images
 end
 
 get "/about/?" do

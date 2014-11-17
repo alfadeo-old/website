@@ -1,0 +1,7 @@
+- @albums.each do |title,imgs|
+  #div{:id => "#{title}", :style=>"display:block;margin:1em;border:1px solid black;padding:1em;"}
+    %h3= title
+    - imgs.each do |img|
+      - thumb = File.join File.dirname(img),"thumbs",File.basename(img)
+      %a{ :href => img, "data-lightbox" => title}
+        %img{:src => thumb}

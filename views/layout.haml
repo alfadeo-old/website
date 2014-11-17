@@ -5,11 +5,8 @@
     %meta{:name => "robots", :content => "all"} 
     %meta{:name => "description", :content => "Electronic Music"}   
     %script{ :src=>"/js/jquery-1.8.3.min.js", :type=>"text/javascript"}
-    -#%script{ :src=>"http://connect.soundcloud.com/sdk.js", :type=>"text/javascript"}
-    -#%script{ :src=>"https://w.soundcloud.com/player/api.js", :type=>"text/javascript"}
-    -#%script{:src=>"/js/jquery.bpopup.min.js", :type=>"text/javascript"}
-    -#%script{ :type=>"text/javascript", :src=>"/js/jquery.flexslider-min.js"}
-    -#%link{ :media=>"screen", :type=>"text/css", :href=>"/css/flexslider.css", :rel=>"stylesheet"} 
+    %script{ :type=>"text/javascript", :src=>"/js/lightbox.min.js"}
+    %link{ :media=>"screen", :type=>"text/css", :href=>"/css/lightbox.css", :rel=>"stylesheet"}
     %link{:rel=>"stylesheet", :href=>"/style.css", :type => "text/css"}
 
 
@@ -35,8 +32,8 @@
             %a{ :href => "/remixes" } Remixes
           %li{:class => ("selected" if /videos/ =~ request.path )}
             %a{ :href => "/videos" } Videos
-          -#%li{:class => ("selected" if /art/ =~ request.path )}
-            -#%a{ :href => "/art" } Art
+          %li{:class => ("selected" if /images/ =~ request.path )}
+            %a{ :href => "/images" } Images
           %li{:class => ("selected" if /about/ =~ request.path )}
             %a{ :href => "/about" } About
     

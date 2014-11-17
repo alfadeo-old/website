@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+require 'mini_exiftool'
+
+Dir["./public/images/*"].each do |album|
+  Dir["#{album}/*"].each do |file|
+    thumbnail = File.join File.dirname(file), "thumbs", File.basename(file)
+    exif = MiniExiftool.new file
+    height = 100
+    width = 16*height/9
+    ratio = [width/exif.imagewidth.to_f, height/exif.imageheight.to_f].min
+    width = (exif.imagewidth*ratio).round
+    height = (exif.imageheight*ratio).round
+    FileUtils.mkdir_p File.dirname(thumbnail)
+    `gm convert "#{file}" -thumbnail #{width}x#{height} -strip "#{thumbnail}"`
+  end
+end
